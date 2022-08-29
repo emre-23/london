@@ -27,6 +27,23 @@ resource "aws_key_pair" "key121" {
   public_key = tls_private_key.oskey.public_key_openssh
 }
 
+
+resource "aws_security_group" "web-sg" {
+  name = "aws-default-security-group-sg"
+  ingress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "All"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
 /* resource "aws_network_interface_sg_attachment" "sg_attachment" {
   security_group_id    = "sg-026ff8cfda7753a07"
   network_interface_id = "eni-0496c10c0f1f159a8"
@@ -40,6 +57,7 @@ resource "aws_instance" "kubernetes" {
   ami = "ami-08d4ac5b634553e16"
   instance_type = "t2.micro"
   key_name      = aws_key_pair.key121.key_name
+  vpc_security_group_ids = [aws_security_group.web-sg.id]
   /* key_name = "emre_aws_kubernetes" */
 
 
