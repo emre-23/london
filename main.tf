@@ -55,7 +55,7 @@ resource "aws_instance" "kubernetes" {
   
   # All four instances will have the same ami and instance_type
   ami = "ami-08d4ac5b634553e16"
-  instance_type = "t2.micro"
+  instance_type = "t3.micro"      #as its required to have 2vCPU and 2GB Memory resources
   key_name      = aws_key_pair.key121.key_name
   vpc_security_group_ids = [aws_security_group.web-sg.id]
   /* key_name = "emre_aws_kubernetes" */

@@ -1,0 +1,20 @@
+- hosts: jenkins
+  become: true
+  
+  tasks:
+    - name: Create a k8s namespace
+      shell: kubectl create namespace jenkins --dry-run=client -o yaml | kubectl apply -f -
+    - name: Copy all files from local to jenkins master
+      copy: src=./jenkins_deployment.yml dest=/home/vagrant/ mode=0744
+    - name: Copy Persistent Volumes
+      copy: src=./jenkins-pv.yml dest=/home/vagrant/ mode=0744
+    - name: Copy persistentVolumeClaim
+      copy: src=./jenkins_pvc.yml dest=/home/vagrant/ mode=0744
+    - name: Copy Service Account 
+      copy: src=./jenkins-sa.yml dest=/home/vagrant/ mode=0744
+    - name: Copy rbac
+      copy: src=./jenkins_svc.yml dest=/home/vagrant/ mode=0744               
+    - name: Create Resources
+      shell: kubectl apply -f /home/vagrant/. -n jenkins
+
+# ansible-playbook -i ansible/jenkins/inventory.ini ansible/jenkins/playbook.yml -b -u vagrant

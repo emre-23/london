@@ -1,0 +1,21 @@
+- name: Ansible Copy EFK Stack Directories to Master
+  hosts: all
+  tasks:
+    - name: Copying the Directory's contents (sub directories/files)
+      become: true 
+      copy:
+        src: .
+        dest: /home/vagrant
+        mode: 0644
+    - name: Create Resources
+      shell: kubectl apply -f /home/vagrant/filebeat/. -n logging
+    - name: Create Resources
+      shell: kubectl apply -f /home/vagrant/elasticsearch/. -n logging
+    - name: Create Resources
+      shell: kubectl apply -f /home/vagrant/logstash/. -n logging
+    - name: Create Resources
+      shell: kubectl apply -f /home/vagrant/kibana/. -n logging                        
+# in root directory where you cloned this repositoryi just run this playbook
+# $ansible-playbook -i ansible/jenkins/inventory.ini efk/copy_local_to_remote.yml  -b -u vagrant
+# on the k8s-master VM, just change your directtory for example to kibana and $helm install kibana .
+# and repeat this action for elasticsearch, logstash and filebeat

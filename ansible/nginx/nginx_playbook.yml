@@ -1,0 +1,19 @@
+- name: Configure webserver with nginx
+  hosts: all
+  become: True
+  tasks:
+    - name: install nginx
+      apt: name=nginx update_cache=yes
+
+    - name: copy nginx config file
+      copy: src=files/emrejenkins.com.conf dest=/etc/nginx/sites-available/
+
+    - name: enable configuration
+      file: >
+        dest=/etc/nginx/sites-enabled/default
+        src=/etc/nginx/sites-available/default
+        state=link
+
+    - name: restart nginx
+      service: name=nginx state=restarted
+  # ansible-playbook -i ansible/jenkins/inventory.ini ansible/nginx/nginx_playbook.yml -b -u vagrant
