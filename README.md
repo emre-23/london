@@ -32,6 +32,11 @@ k8s-master ansible_host=127.0.0.1  ip=127.0.0.1 etcd_member_name=etcd1
 node-1 ansible_host=127.0.0.1      ip=127.0.0.1 etcd_member_name=etcd2
 node-2 ansible_host=127.0.0.1      ip=127.0.0.1 etcd_member_name=etcd3
 ```
+
+```shell
+$ ansible-playbook -i  kubespray/inventory/sample/inventory.ini kubespray/cluster.yml -b -u vagrant
+```
+
 ### Jenkins
 You can use simply ansible/jenkins/inventory.ini file and run the ansible-playbook command to dpeloy jenkins on your kubernetes:
 
