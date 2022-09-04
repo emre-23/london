@@ -48,7 +48,7 @@ $ ansible-playbook -i ansible/nginx/inventory.ini ansible/nginx/nginx_playbook.y
 ### EFK Stack on K8S
 Here needs some troubleshooting which locally setup k8s doesn't work properly while tracing the container logs but below ansible playbook will setup the **stack** without any issue.
 ```shell
-$ ansible-playbook -i ansible/efk/inventory.ini efk/setup_efk.yml -b -u vagrant
+$ ansible-playbook -i efk/inventory.ini efk/setup_efk.yml -b -u vagrant
 ```
 
 ### Some troubleshooting parts before/while setting up
