@@ -18,7 +18,8 @@ $ terraform apply
 
 > Note that above command will create two ec2 instances, security group related a network interface which allows all traffic to enable ssh and http requests also keypair as .pem file to be able to remote secure shell connection. Firstly you need to install [aws cli](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) to import your authorization credentials such as AccessKeyId&SecretKey and take a quick look at [terraform official documents](https://learn.hashicorp.com/tutorials/terraform/aws-build) included educating videos.
 
-> If it's preferred that provisioning machines locally such as Vagrant and Vbox provider, you can just run the command below where you are on the Vagrantfile located at.
+> If it's preferred that provisioning machines locally such as Vagrant and Vbox provider, you can just run the command below where you are on the Vagrantfile located at. You can find example Vagrantfile [here](https://github.com/bilalcaliskan/vagrant-ansible-lab/blob/master/Vagrantfile).
+
 ```shell
 $ vagrant up
 ```
