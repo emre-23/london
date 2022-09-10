@@ -2,6 +2,5 @@ FROM golang:alpine
 RUN mkdir -p app
 COPY . /app
 WORKDIR .
-RUN go mod init github.com/emre-23/london/golang
 RUN go build -o main .
 CMD ["/app/main"]
