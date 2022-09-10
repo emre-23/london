@@ -2,6 +2,6 @@ FROM golang:alpine
 RUN mkdir /app
 COPY . /app
 WORKDIR /app/go_challenge
-RUN cd .. && go mod init
+RUN cd .. && go mod init github.com/emre-23/london
 RUN go build -o main .
 CMD ["/app/go_challenge/main"]
