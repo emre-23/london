@@ -1,6 +1,6 @@
 FROM golang:alpine
 RUN mkdir -p app
-COPY ./*.go /app
+COPY . /app
 WORKDIR /app
 RUN go mod init github.com/emre-23/london/golang
 RUN go mod tidy
