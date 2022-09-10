@@ -1,3 +1,4 @@
 FROM golang:alpine
+RUN go mod init github.com/emre-23/london/golang
 RUN go build .
 RUN ./main
