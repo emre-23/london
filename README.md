@@ -56,6 +56,13 @@ Here needs some troubleshooting which locally setup k8s doesn't work properly wh
 $ ansible-playbook -i efk/inventory.ini efk/setup_efk.yml -b -u vagrant
 ```
 
+### CI/CD
+For CI/CD step we would like to use github actions w/ [actions_first.yml](https://github.com/emre-23/london/blob/master/.github/workflows/actions_first.yml) and these steps are building a simple go application under [golang](https://github.com/emre-23/london/tree/master/golang) folder.
+
+> Check out for the [docker image](https://hub.docker.com/layers/23emre/main/action_v1/images/sha256-daee582d1de28dc90bb34324ecdcacf5e57a343e89c4c841d4686cd65751c066?context=explore)
+
+> Please use [Github Secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets) to use environment variables in your github actions files.
+
 ### Some troubleshooting parts before/while setting up
 - Add these lines on your local under/etc/vbox/networks.conf if you prefer to use Vagrant&VirtualBox combine because we need to use 'Host only Network Adapter'
 ```shell
