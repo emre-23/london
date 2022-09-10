@@ -8,8 +8,9 @@ RUN apk update && apk upgrade && \
         git \
         musl-dev
 
-WORKDIR /go/src/work
+
 COPY go_challenge/main.go /go/src/work/
+WORKDIR /go/src/work
 
 RUN go build -o app
 
