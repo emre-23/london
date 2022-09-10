@@ -1,7 +1,23 @@
-FROM golang:alpine
-RUN mkdir /app
-COPY . /app
-WORKDIR /app/go_challenge
-RUN cd .. && go mod init
-RUN go build -o main .
-CMD ["/app/go_challenge/main"]
+FROM golang:1.12.5-alpine3.9 as debug
+
+# installing git
+RUN apk update && apk upgrade && \
+    apk add --no-cache git \
+        dpkg \
+        gcc \
+        git \
+        musl-dev
+
+ENV GOPATH /go
+ENV PATH $GOPATH/bin:/usr/local/go/bin:$PATH
+
+WORKDIR /go/src/work
+COPY ./go_challenge /go/src/work/
+
+RUN go build -o app
+
+###########START NEW IMAGE###################
+
+FROM alpine:3.9 as prod
+COPY --from=debug /go/src/work/app /
+CMD ./app
