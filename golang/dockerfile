@@ -1,7 +1,7 @@
 FROM golang:alpine
-RUN mkdir /app
-COPY . /app/
-WORKDIR /app
+RUN mkdir -p app
+COPY . app/
+WORKDIR /app/
 RUN go mod init github.com/emre-23/london/golang
 RUN go mod tidy
 RUN go build -o main .
