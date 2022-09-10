@@ -18,7 +18,7 @@ jobs:
       env:
         DOCKER_USER: ${ secrets.DOCKER_USER }} []
         DOCKER_PASSWD: ${ secrets.DOCKER_PASSWD }} []
-      run: docker login -u $DOCKER_USER -p $DOCKER_PASSWD
+      run: docker login https://registry-1.docker.io/v2/ -u $DOCKER_USER -p $DOCKER_PASSWD
     - name: Build the Docker image
       run: docker build . --file ./golang/dockerfile --tag 23emre/main:action_v1
     - name: Push Docker image
