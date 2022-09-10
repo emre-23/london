@@ -1,6 +1,2 @@
 FROM golang:alpine
-RUN mkdir -p app
-COPY . /app
-WORKDIR .
-RUN go build -o main .
-CMD ["/app/main"]
+RUN go run main.go
