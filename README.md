@@ -57,9 +57,11 @@ $ ansible-playbook -i efk/inventory.ini efk/setup_efk.yml -b -u vagrant
 ```
 
 ### CI/CD
-For CI/CD step we would like to use github actions w/ [actions_first.yml](https://github.com/emre-23/london/blob/master/.github/workflows/actions_first.yml) and these steps are building a simple go application under [golang](https://github.com/emre-23/london/tree/master/golang) folder.
+For CI/CD step we would like to use github actions w/ [actions_first.yml](https://github.com/emre-23/london/blob/master/.github/workflows/actions_first.yml) and these steps are building a simple go application under [golang](https://github.com/emre-23/london/tree/master/golang) folder with a [multi-stage Dockerfile](https://github.com/emre-23/london/blob/master/golang/dockerfile).
 
 > Check out for the [docker image](https://hub.docker.com/layers/23emre/main/action_v1/images/sha256-daee582d1de28dc90bb34324ecdcacf5e57a343e89c4c841d4686cd65751c066?context=explore)
+
+> Check out for [multi-stage builds](https://docs.docker.com/develop/develop-images/multistage-build/#use-multi-stage-builds).
 
 > Please use [Github Secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets) to use environment variables in your github actions files.
 
