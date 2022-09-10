@@ -9,10 +9,10 @@ RUN apk update && apk upgrade && \
         musl-dev
 
 RUN mkdir /app
-COPY . /app
+COPY ./* /app
 WORKDIR /app/go_challenge
 
-RUN go build -o app
+RUN go build -o main
 
 ###########START NEW IMAGE###################
 
