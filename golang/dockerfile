@@ -11,8 +11,10 @@ RUN apk update && apk upgrade && \
 ENV GOPATH /go
 ENV PATH $GOPATH/bin:/usr/local/go/bin:$PATH
 
-WORKDIR /go/src/work
-COPY ./go_challenge /go/src/work/
+RUN mkdir /app
+COPY . /app
+WORKDIR /app/go_challenge
+
 
 RUN go build -o app
 
