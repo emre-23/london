@@ -13,4 +13,4 @@ jobs:
       run: docker build . --file ./golang/dockerfile --tag 23emre/main:action_v1
     - name: Push Docker image
       run: |
-        dokcer push 23emre/main:action_v1
+        docker push 23emre/main:action_v1
